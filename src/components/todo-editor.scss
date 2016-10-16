@@ -1,0 +1,15 @@
+#rh-todo-editor-header {
+  h1, h2, h3 {
+    margin-top: 0;
+  }
+}
+
+#rh-todo-editor-controls {
+  .btn {
+    margin-right: 5px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

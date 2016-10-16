@@ -1,0 +1,89 @@
+<div class="container" id="rh-todo-list-main">
+
+  <div class="page-header">
+    <h1>Todo List</h1>
+  </div>
+
+  <div class="row">
+
+    <!-- control panel -->
+    <div id="rh-todo-manager" class="col-xs-12 col-sm-4">
+
+      <div id="rh-todo-list-controls">
+
+        <div class="rh-todo-control">
+          <a type="button" class="btn btn-primary btn-lg" ui-sref="todos.create">
+            <span class="glyphicon glyphicon-plus"></span>
+            New Todo
+          </a>
+        </div>
+
+        <div class="rh-todo-control">
+          <button type="button" class="btn btn-danger btn-lg" ng-click="tlCntl.clearTodos()">
+            <span class="glyphicon glyphicon-remove"></span>
+            Clear Todos
+          </button>
+        </div>
+
+        <div class="rh-todo-control" ng-show="!tlCntl.showCompleted">
+          <button type="button" class="btn btn-default btn-lg"
+            
+            ng-click="tlCntl.showCompleted = true"
+          >
+            <span class="glyphicon glyphicon-eye-open"></span>
+            Show Completed
+          </button>
+        </div>
+
+        <div class="rh-todo-control" ng-show="tlCntl.showCompleted">
+          <button type="button" class="btn btn-default btn-lg"
+            ng-click="tlCntl.showCompleted = false"
+          >
+            <span class="glyphicon glyphicon-eye-close"></span>
+            Hide Completed
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- main panel -->
+    <div id="rh-todo-list" class="col-xs-12 col-sm-8">
+
+      <!-- the nested view for creating and editing todos -->
+      <div class="well" id="rh-todo-editor-wrapper" ui-view></div>
+
+      <!-- the actual todo list -->
+      <ul class="list-group">
+
+        <li class="list-group-item rh-todo"
+          ng-repeat="todo in tlCntl.todos | todoListFilter:tlCntl.showCompleted | orderBy:['dueDate', 'creationDate']"
+          ng-class="{'list-group-item-danger': tlCntl.isOverdue(todo)}"
+        >
+          <div class="form-group">
+
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="todo.completed">
+                <b>{{ todo.text }}</b>
+
+                <span class="rh-todo-date" ng-show="todo.dueDate">
+                  by {{ todo.dueDate | date: 'shortDate' }}
+                </span>
+              </label>
+            </div>
+
+            <a type="button" class="btn btn-default btn-sm rh-edit-todo"
+              ng-click="tlCntl.editTodo(todo)"
+            >
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
