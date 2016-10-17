@@ -1,7 +1,7 @@
 <div class="container" id="rh-todo-list-main">
 
   <div class="page-header">
-    <h1>ToDo List</h1>
+    <h1>To-Do List</h1>
   </div>
 
   <div class="row">
@@ -14,14 +14,14 @@
         <div class="rh-todo-control">
           <a type="button" class="btn btn-primary btn-lg" ui-sref="todos.create">
             <span class="glyphicon glyphicon-plus"></span>
-            New ToDo
+            New To-Do
           </a>
         </div>
 
         <div class="rh-todo-control">
           <button type="button" class="btn btn-danger btn-lg" ng-click="tlCntl.clearTodos()">
             <span class="glyphicon glyphicon-remove"></span>
-            Clear ToDos
+            Clear To-Dos
           </button>
         </div>
 
@@ -58,7 +58,7 @@
       <ul class="list-group">
 
         <li id="rh-no-todos" class="list-group-item" ng-if="!tlCntl.todos.length">
-          You don't have any todos yet.
+          You don't have any to-dos yet.
         </li>
 
         <li class="list-group-item rh-todo"
